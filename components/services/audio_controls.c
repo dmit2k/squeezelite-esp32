@@ -21,6 +21,7 @@
 #include "accessors.h"
 #include "services.h"
 #include "audio_controls.h"
+#include "adkey.h"
 
 typedef esp_err_t (actrls_config_map_handler) (const cJSON * member, actrls_config_t *cur_config,uint32_t offset);
 typedef struct {
@@ -178,6 +179,7 @@ esp_err_t actrls_init(const char *profile_name) {
 	
 	// set infrared GPIO if any
 	parse_set_GPIO(set_ir_gpio);
+	adkey_init();
 
 	if (!err) return actrls_init_json(profile_name, true);
 	else return err;

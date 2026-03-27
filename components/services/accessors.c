@@ -1190,6 +1190,9 @@ cJSON * get_gpio_list(bool refresh) {
 		}
 		free(bat_config);
 	}
+	if (CONFIG_ADKEY_GPIO >= 0) {
+		cJSON_AddItemToArray(gpio_list, get_gpio_entry("adkey", "other", CONFIG_ADKEY_GPIO, false));
+	}
 	gpio_list=get_GPIO_nvs_list(gpio_list);
 	gpio_list=get_SPDIF_GPIO(gpio_list,is_spdif_config_locked());
 	gpio_list=get_Rotary_GPIO(gpio_list);

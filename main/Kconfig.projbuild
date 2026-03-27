@@ -249,6 +249,16 @@ menu "Squeezelite-ESP32"
 				default 8191
 				help
 					Maximum raw LEDC duty for the dedicated PWM master-volume output.
+			config ADKEY_GPIO
+				int "GPIO for ADKEY resistor ladder"
+				default -1
+				help
+					Dedicated ADC-capable GPIO for an optional 3-button ADKEY resistor ladder. Set to -1 to disable.
+			config ADKEY_DEBUG
+				bool "Enable ADKEY debug logging"
+				default n
+				help
+					Log raw ADC values around state transitions and confirmed ADKEY states to help threshold tuning.
 		endmenu
 
 		menu "SPDIF settings"
